@@ -1,0 +1,223 @@
+version: '3.8'
+
+services:
+  # MYSQL
+  mysql:
+    image: mysql:8.0
+    container_name: kl_mysql_db
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=product
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=1234
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - kl_pj1
+
+  # POSTGRESQL
+  postgres:
+    container_name: kl_pg_db
+    image: postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=1234
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - kl_pj1
+    restart: unless-stopped
+
+  # POSTGRESQL ADMIN
+  pgadmin:
+    container_name: kl_pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgamdin:/var/lib/pgadmin
+    ports:
+      - 5050:80
+    networks:
+      - kl_pj1
+    restart: unless-stopped
+
+  #MONGO
+  mongodb:
+    image: mongo:latest
+    container_name: kl_mongo_db
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=huuduc
+      - MONGO_INITDB_ROOT_PASSWORD=huuduc
+
+  #MONGO EXPRESS
+  mongo-express:
+    image: mongo-express
+    container_name: kl_mongo_express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=huuduc
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=huuduc
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+
+  #ZOOKEEPER FOR KAFKA
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: kl_zookeeper
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "22181:2181"
+    networks:
+      - kl_pj1
+
+  #KAFKA
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    container_name: kl_kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+    networks:
+      - kl_pj1
+
+  #MAIL SERVER FOR DEV
+  mail-dev:
+    container_name: kl_mail_dev
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+  #ZIPKIN
+  zipkin:
+    container_name: kl_zipkin
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+    networks:
+      - kl_pj1
+
+  #PROMETHEUS
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: kl_prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  #REDIS
+  redis:
+    image: docker.io/redis
+    container_name: kl_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-data:/data
+    networks:
+      - kl_pj1
+
+  #TEMPORAL
+  temporal:
+    container_name: kl_temporal
+    depends_on:
+      - postgres
+    environment:
+      - DB=postgres12
+      - DB_PORT=5432
+      - POSTGRES_USER=user
+      - POSTGRES_PWD=1234
+      - POSTGRES_SEEDS=postgres
+      - DYNAMIC_CONFIG_FILE_PATH=config/dynamicconfig/development-sql.yml
+    image: temporalio/auto-setup
+    networks:
+      - kl_pj1
+    ports:
+      - 7233:7233
+    volumes:
+      - ./dynamicconfig:/etc/temporal/config/dynamicconfig
+
+  #TEMPORAL ADMIN
+  temporal-admin-tools:
+    container_name: kl_temporal-admin-tools
+    depends_on:
+      - temporal
+    environment:
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_CLI_ADDRESS=temporal:7233
+    image: temporalio/admin-tools
+    networks:
+      - kl_pj1
+    stdin_open: true
+    tty: true
+
+  #TEMPORAL UI
+  temporal-ui:
+    container_name: kl_temporal-ui
+    depends_on:
+      - temporal
+    environment:
+      - TEMPORAL_ADDRESS=temporal:7233
+      - TEMPORAL_CORS_ORIGINS=http://localhost:3000
+    image: temporalio/ui
+    networks:
+      - kl_pj1
+    ports:
+      - 8088:8080
+
+  #HASHICORP VAULT
+  vault:
+    image: hashicorp/vault:1.8.1
+    container_name: kl_vault
+    restart: always
+    ports:
+      - "8200:8200"
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+      - VAULT_API_ADDR=http://0.0.0.0:8200
+      - VAULT_ADDRESS=http://0.0.0.0:8200
+      - VAULT_DEV_ROOT_TOKEN_ID=Yf7dP5TuAD6ygJBoVDa2Bg2U
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./vault/config:/vault/config
+      - ./vault/policies:/vault/policies
+      - ./vault/data:/vault/file
+    networks:
+      - kl_pj1
+
+
+networks:
+  kl_pj1:
+    driver: bridge
+volumes:
+  postgres:
+  pgamdin:
+  mysql:
+  mongo:

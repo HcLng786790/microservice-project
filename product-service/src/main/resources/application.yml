@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: product-service
+  datasource:
+    url: jdbc:mysql://localhost:3307/product?useSSL=true
+    username: user
+    password: 1234
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    endpoint:
+      prometheus:
+        enabled: true
+  tracing:
+    sampling:
+      probability: 1.0
+
+redis:
+  host: localhost
+  port: 6379
+
+application:
+  security:
+    jwt:
+      secret-key: A0835454A65D5DF4A656B1F9A83B47AFC96053C753515184669FEF5AF686C7B9970F7EE86C0274CED107EB07AA3CEA1BBB4E1E6BB2DEAB9A76A98AEBBBAE04A8
+      expiration: 8640000
+  redis:
+    host: localhost
+    port: 6379
+

@@ -1,0 +1,114 @@
+2024-10-21 17:06:45 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-10-21 17:06:45 [main] INFO  c.h.a.AuthServiceApplication - Starting AuthServiceApplication using Java 19.0.1 with PID 27108 (D:\Project-KL\Project1\auth-service\target\classes started by admind in D:\Project-KL\Project1)
+2024-10-21 17:06:45 [main] INFO  c.h.a.AuthServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-21 17:06:45 [main] INFO  o.s.v.c.e.LeaseAwareVaultPropertySource - Vault location [secret/auth-service] not resolvable: Not found
+2024-10-21 17:06:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-21 17:06:46 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 59 ms. Found 2 JPA repository interfaces.
+2024-10-21 17:06:46 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=a167560b-e87a-3901-8738-ed1360c97258
+2024-10-21 17:06:47 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8050 (http)
+2024-10-21 17:06:47 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8050"]
+2024-10-21 17:06:47 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-21 17:06:47 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-21 17:06:47 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-10-21 17:06:47 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2286 ms
+2024-10-21 17:06:48 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-21 17:06:48 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-21 17:06:48 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-21 17:06:48 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-21 17:06:48 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-21 17:06:49 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@751526a7
+2024-10-21 17:06:49 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-21 17:06:49 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-21 17:06:49 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-21 17:06:49 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-21 17:06:50 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-21 17:06:50 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-21 17:06:50 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-21 17:06:50 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2024-10-21 17:06:52 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2024-10-21 17:06:52 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8050"]
+2024-10-21 17:06:52 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8050 (http) with context path '/'
+2024-10-21 17:06:53 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2024-10-21 17:06:53 [main] INFO  c.h.a.AuthServiceApplication - Started AuthServiceApplication in 10.586 seconds (process running for 11.118)
+2024-10-21 17:06:58 [http-nio-8050-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-21 17:06:58 [http-nio-8050-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-21 17:06:58 [http-nio-8050-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-10-21 17:07:35 [SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-21 17:07:35 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-21 17:07:35 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-10-21 17:07:41 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-10-21 17:07:41 [main] INFO  c.h.a.AuthServiceApplication - Starting AuthServiceApplication using Java 19.0.1 with PID 4576 (D:\Project-KL\Project1\auth-service\target\classes started by admind in D:\Project-KL\Project1)
+2024-10-21 17:07:41 [main] INFO  c.h.a.AuthServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-10-21 17:07:41 [main] INFO  o.s.v.c.e.LeaseAwareVaultPropertySource - Vault location [secret/auth-service] not resolvable: Not found
+2024-10-21 17:07:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-21 17:07:42 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 52 ms. Found 2 JPA repository interfaces.
+2024-10-21 17:07:43 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=d50ee184-0228-3f5e-8885-a0ff714733bf
+2024-10-21 17:07:43 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8050 (http)
+2024-10-21 17:07:43 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8050"]
+2024-10-21 17:07:43 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-10-21 17:07:43 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-21 17:07:43 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-10-21 17:07:43 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2137 ms
+2024-10-21 17:07:44 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-21 17:07:44 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-21 17:07:44 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-10-21 17:07:44 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-21 17:07:44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-10-21 17:07:45 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a887649
+2024-10-21 17:07:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-10-21 17:07:45 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-21 17:07:45 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-21 17:07:45 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-21 17:07:46 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-10-21 17:07:46 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-10-21 17:07:46 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-21 17:07:47 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator'
+2024-10-21 17:07:48 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2024-10-21 17:07:48 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8050"]
+2024-10-21 17:07:48 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8050 (http) with context path '/'
+2024-10-21 17:07:49 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2024-10-21 17:07:49 [main] INFO  c.h.a.AuthServiceApplication - Started AuthServiceApplication in 10.466 seconds (process running for 10.988)
+2024-10-21 17:07:50 [http-nio-8050-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-21 17:07:50 [http-nio-8050-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-10-21 17:07:50 [http-nio-8050-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-10-21 17:07:50 [http-nio-8050-exec-1] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:07:50 [http-nio-8050-exec-1] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:07:54 [http-nio-8050-exec-3] INFO  c.h.a.config.AccessLogFilter - Incoming request: POST /api/auth/authenticate from 0:0:0:0:0:0:0:1
+2024-10-21 17:07:55 [http-nio-8050-exec-3] INFO  c.h.a.config.AccessLogFilter - Response status: 401
+2024-10-21 17:08:00 [http-nio-8050-exec-4] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:08:00 [http-nio-8050-exec-4] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:08:09 [http-nio-8050-exec-6] INFO  c.h.a.config.AccessLogFilter - Incoming request: POST /api/auth/authenticate from 0:0:0:0:0:0:0:1
+2024-10-21 17:08:09 [http-nio-8050-exec-6] INFO  c.h.a.controller.AuthController - Accessed /authenticate
+2024-10-21 17:08:09 [http-nio-8050-exec-6] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:08:10 [http-nio-8050-exec-5] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:08:10 [http-nio-8050-exec-5] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:08:20 [http-nio-8050-exec-7] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:08:20 [http-nio-8050-exec-7] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:08:30 [http-nio-8050-exec-8] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:08:30 [http-nio-8050-exec-8] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:08:40 [http-nio-8050-exec-10] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:08:40 [http-nio-8050-exec-10] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:08:44 [http-nio-8050-exec-9] INFO  c.h.a.config.AccessLogFilter - Incoming request: POST /api/auth/authenticate from 127.0.0.1
+2024-10-21 17:08:44 [http-nio-8050-exec-9] INFO  c.h.a.controller.AuthController - Accessed /authenticate
+2024-10-21 17:08:44 [http-nio-8050-exec-9] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:08:50 [http-nio-8050-exec-1] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:08:50 [http-nio-8050-exec-1] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:09:00 [http-nio-8050-exec-2] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:09:00 [http-nio-8050-exec-2] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:09:04 [http-nio-8050-exec-3] INFO  c.h.a.config.AccessLogFilter - Incoming request: POST /api/auth/authenticate from 127.0.0.1
+2024-10-21 17:09:04 [http-nio-8050-exec-3] INFO  c.h.a.config.AccessLogFilter - Response status: 400
+2024-10-21 17:09:10 [http-nio-8050-exec-4] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:09:10 [http-nio-8050-exec-4] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:09:20 [http-nio-8050-exec-5] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:09:20 [http-nio-8050-exec-5] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:09:29 [http-nio-8050-exec-7] INFO  c.h.a.config.AccessLogFilter - Incoming request: POST /api/auth/authenticate from 127.0.0.1
+2024-10-21 17:09:29 [http-nio-8050-exec-7] INFO  c.h.a.config.AccessLogFilter - Response status: 401
+2024-10-21 17:09:30 [http-nio-8050-exec-8] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:09:30 [http-nio-8050-exec-8] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:09:40 [http-nio-8050-exec-10] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:09:40 [http-nio-8050-exec-10] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:09:50 [http-nio-8050-exec-9] INFO  c.h.a.config.AccessLogFilter - Incoming request: GET /actuator/prometheus from 127.0.0.1
+2024-10-21 17:09:50 [http-nio-8050-exec-9] INFO  c.h.a.config.AccessLogFilter - Response status: 200
+2024-10-21 17:09:51 [SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-21 17:09:51 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-10-21 17:09:51 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

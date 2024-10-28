@@ -1,0 +1,68 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order_db
+    username: user
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: orderConfirmation:com.huuduc.orderservice.dto.OrderConfirmation
+server:
+  port: 8060
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  web:
+    exposure:
+      include: "*"
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      product-service:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        eventConsumerBufferSize: 10
+        minimumNumberOfCalls: 5
+
+
+application:
+  config:
+    user-url: http://localhost:8050/api/auth/user
+    product-url: http://localhost:8080/api/products
+  security:
+    jwt:
+      secret-key: A0835454A65D5DF4A656B1F9A83B47AFC96053C753515184669FEF5AF686C7B9970F7EE86C0274CED107EB07AA3CEA1BBB4E1E6BB2DEAB9A76A98AEBBBAE04A8
+      expiration: 8640000
